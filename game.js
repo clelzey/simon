@@ -1,5 +1,5 @@
 const body = $('body');
-const instructions = $('#instructions')
+const instructions = $('#instructions');
 const buttonColors = ['green', 'red', 'yellow', 'blue'];
 const timer = ms => new Promise(res => setTimeout(res, ms));
 let gamePattern = [];
@@ -13,15 +13,15 @@ function makeSound(color) {
 }
 
 function buttonAnimation(currentButton) {
-    const activeButton = $('#' + currentButton)
-    activeButton.addClass('pressed')
+    const activeButton = $('#' + currentButton);
+    activeButton.addClass('pressed');
     setTimeout(function () {
         activeButton.removeClass('pressed');
     }, 100);
 }
 
 function nextSequence() {
-    userClickedPattern = []
+    userClickedPattern = [];
     const randomNumber = Math.floor(Math.random() * 4);
     const randomChosenColor = buttonColors[randomNumber];
     gamePattern.push(randomChosenColor);
@@ -30,7 +30,9 @@ function nextSequence() {
 }
 
 async function computersTurn() {
-    setTimeout(function () {body.addClass('computer-turn')}, 100);
+    setTimeout(function () {
+        body.addClass('computer-turn');
+    }, 100);
     instructions.text('Watch!');
     for (let i = 0; i < gamePattern.length; i++) {
         makeSound(gamePattern[i]);
@@ -54,7 +56,7 @@ function checkAnswer(currentLevel) {
         makeSound('wrong');
         $('#level-title').text('Game Over, Press Any Key to Restart');
         body.addClass('game-over');
-        instructions.text('')
+        instructions.text('');
         setTimeout(function () {
             body.removeClass('game-over');
         }, 200);
@@ -73,11 +75,11 @@ $('.button').click(function () {
     makeSound(userChosenColor);
     buttonAnimation(userChosenColor);
     checkAnswer(userClickedPattern.length - 1);
-})
+});
 
 body.keypress(function () {
     if (!started) {
-        started = true
+        started = true;
         nextSequence();
         computersTurn().then();
     }
