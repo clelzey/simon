@@ -47,7 +47,7 @@ function checkAnswer(currentLevel) {
             setTimeout(function () {
                 nextSequence();
                 computersTurn().then();
-            }, 1000);
+            }, 1500);
         }
     } else {
         startOver();
