@@ -1,2 +1,2 @@
-# simon
-Play a game of simon
+# Simon
+Play the classic Simon game
